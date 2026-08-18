@@ -1,0 +1,79 @@
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 4rem;
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+body {
+  @apply font-sans antialiased bg-bg text-dark;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2e;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a40;
+}
+
+.focus-ring:focus-visible {
+  @apply outline-2 outline-offset-2 outline-accent;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: rgba(10, 10, 11, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.grid-fade {
+  background-image:
+    linear-gradient(rgba(244, 244, 245, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 244, 245, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 40%, transparent 100%);
+}
+
+.marquee-row {
+  animation-play-state: running !important;
+}
