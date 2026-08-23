@@ -3,37 +3,81 @@ import type { ContactItem } from '~/types/portfolio'
 import { certificates } from '~/i18n/certificates'
 import { techCategoriesBase } from '~/i18n/techCategories'
 
-const { public: publicConfig } = useRuntimeConfig()
-const { content } = useSiteContent()
-const { detectLocale } = useLocale()
-
-onMounted(() => {
-  detectLocale()
+definePageMeta({
+  validate: (route) => route.params.locale === undefined || route.params.locale === 'en',
 })
 
-const siteUrl = new URL('/', publicConfig.siteUrl).toString()
-const ogImageUrl = new URL('/og-image.svg', siteUrl).toString()
+const { public: publicConfig } = useRuntimeConfig()
+const { content } = useSiteContent()
+const { locale } = useLocale()
+
+const personName = 'Lucas Trentin'
+
+const ptUrl = new URL('/', publicConfig.siteUrl).toString()
+const enUrl = new URL('/en', publicConfig.siteUrl).toString()
+const localizedSiteUrl = computed(() => (locale.value === 'en' ? enUrl : ptUrl))
+const ogImageUrl = computed(() =>
+  new URL(locale.value === 'en' ? '/og-image-en.svg' : '/og-image.svg', publicConfig.siteUrl).toString(),
+)
+const pageTitle = computed(() => `${personName} — ${content.value.hero.title}`)
+
+const alumniInstitutions = computed(() => {
+  const names = content.value.education.filter((item) => !item.interrupted).map((item) => item.institution)
+  return Array.from(new Set(names))
+})
 
 useSeoMeta({
-  title: publicConfig.siteName,
-  description: publicConfig.siteDescription,
-  ogTitle: publicConfig.siteName,
-  ogDescription: publicConfig.siteDescription,
-  ogType: 'website',
-  ogUrl: siteUrl,
+  title: pageTitle,
+  description: () => content.value.hero.about,
+  ogTitle: pageTitle,
+  ogDescription: () => content.value.hero.about,
+  ogUrl: localizedSiteUrl,
   ogImage: ogImageUrl,
-  ogSiteName: publicConfig.siteName,
-  twitterCard: 'summary_large_image',
-  twitterTitle: publicConfig.siteName,
-  twitterDescription: publicConfig.siteDescription,
+  ogSiteName: pageTitle,
+  twitterTitle: pageTitle,
+  twitterDescription: () => content.value.hero.about,
   twitterImage: ogImageUrl,
 })
 
 useHead({
+  htmlAttrs: {
+    lang: () => (locale.value === 'en' ? 'en' : 'pt-BR'),
+  },
   link: [
+    { rel: 'canonical', href: localizedSiteUrl },
+    { rel: 'alternate', hreflang: 'pt-BR', href: ptUrl },
+    { rel: 'alternate', hreflang: 'en', href: enUrl },
+    { rel: 'alternate', hreflang: 'x-default', href: ptUrl },
+  ],
+  meta: [
+    { property: 'og:locale', content: () => (locale.value === 'en' ? 'en_US' : 'pt_BR') },
+    { property: 'og:locale:alternate', content: () => (locale.value === 'en' ? 'pt_BR' : 'en_US') },
+  ],
+  script: [
     {
-      rel: 'canonical',
-      href: siteUrl,
+      type: 'application/ld+json',
+      innerHTML: () =>
+        JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: personName,
+          jobTitle: content.value.hero.title,
+          description: content.value.hero.about,
+          url: localizedSiteUrl.value,
+          image: new URL('/images/profile.png', publicConfig.siteUrl).toString(),
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Novo Hamburgo',
+            addressRegion: 'RS',
+            addressCountry: 'BR',
+          },
+          sameAs: [publicConfig.linkedinUrl, publicConfig.githubUrl, publicConfig.siteUrl],
+          knowsLanguage: ['pt', 'en', 'es'],
+          alumniOf: alumniInstitutions.value.map((name) => ({
+            '@type': 'CollegeOrUniversity',
+            name,
+          })),
+        }),
     },
   ],
 })

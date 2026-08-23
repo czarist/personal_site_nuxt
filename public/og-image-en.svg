@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="15%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0A0A0B"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="1160" y="0" width="40" height="630" fill="url(#grad)"/>
+  <text x="80" y="280" font-family="Inter, system-ui, sans-serif" font-size="60" font-weight="800" fill="#FFFFFF" letter-spacing="3">LUCAS CEZAR TRENTIN</text>
+  <text x="80" y="350" font-family="Inter, system-ui, sans-serif" font-size="30" font-weight="600" fill="#22D3EE" letter-spacing="2">SOFTWARE ENGINEER</text>
+  <text x="80" y="520" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="400" fill="#9CA3AF">cezartrentin.dev</text>
+</svg>

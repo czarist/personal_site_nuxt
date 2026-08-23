@@ -211,31 +211,31 @@ export const enContent: SiteContent = {
   education: [
     {
       degree: 'Software Engineering — MBA',
-      institution: 'Faculdade Metropolitana do Estado de São Paulo (FAMEESP)',
+      institution: 'Metropolitan College of the State of São Paulo (FAMEESP)',
       start: 'APR 2024',
       end: 'DEC 2024',
     },
     {
       degree: 'Software Architecture — Postgraduate (Lato Sensu)',
-      institution: 'Universidade Norte do Paraná (UNOPAR)',
+      institution: 'University of Northern Paraná (UNOPAR)',
       start: 'NOV 2022',
       end: 'AUG 2023',
     },
     {
       degree: 'Data Engineering — Postgraduate (Lato Sensu)',
-      institution: 'Universidade Norte do Paraná (UNOPAR)',
+      institution: 'University of Northern Paraná (UNOPAR)',
       start: 'DEC 2023',
       end: 'MAY 2023',
     },
     {
       degree: 'Systems Analysis and Development — Associate Degree',
-      institution: 'Centro Universitário Internacional de Curitiba (UNINTER)',
+      institution: 'International University Center of Curitiba (UNINTER)',
       start: 'JUL 2021',
       end: 'OCT 2022',
     },
     {
       degree: 'Computer Science — Bachelor’s Degree',
-      institution: 'Faculdade de Desenvolvimento do Rio Grande do Sul (FADERGS)',
+      institution: 'Rio Grande do Sul College of Development (FADERGS)',
       start: 'JUN 2018',
       end: 'DISCONTINUED',
       interrupted: true,

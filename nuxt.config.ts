@@ -10,7 +10,6 @@ const linkedinUrl =
 const githubUrl = process.env.NUXT_PUBLIC_GITHUB_URL ?? 'https://github.com/czarist'
 
 export default defineNuxtConfig({
-  ssr: false,
   devtools: {
     enabled: true,
   },
@@ -44,55 +43,11 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'theme-color', content: '#0A0A0B' },
-        { name: 'description', content: siteDescription },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: siteUrl },
-        { property: 'og:title', content: siteName },
-        { property: 'og:description', content: siteDescription },
-        { property: 'og:image', content: `${siteUrl}/og-image.svg` },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
-        { property: 'og:locale', content: 'pt_BR' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: siteName },
-        { name: 'twitter:description', content: siteDescription },
-        { name: 'twitter:image', content: `${siteUrl}/og-image.svg` },
         { name: 'robots', content: 'index, follow' },
-      ],
-      script: [
-        {
-          type: 'application/ld+json',
-          innerHTML: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Person',
-            name: 'Lucas Trentin',
-            jobTitle: 'Engenheiro de Software',
-            url: siteUrl,
-            image: `${siteUrl}/images/profile.png`,
-            address: {
-              '@type': 'PostalAddress',
-              addressLocality: 'Novo Hamburgo',
-              addressRegion: 'RS',
-              addressCountry: 'BR',
-            },
-            sameAs: [linkedinUrl, githubUrl, siteUrl],
-            knowsLanguage: ['pt', 'en', 'es'],
-            alumniOf: [
-              {
-                '@type': 'CollegeOrUniversity',
-                name: 'Faculdade Metropolitana do Estado de São Paulo (FAMEESP)',
-              },
-              {
-                '@type': 'CollegeOrUniversity',
-                name: 'Universidade Norte do Paraná (UNOPAR)',
-              },
-              {
-                '@type': 'CollegeOrUniversity',
-                name: 'Centro Universitário Internacional de Curitiba (UNINTER)',
-              },
-            ],
-          }),
-        },
       ],
       link: [
         {
