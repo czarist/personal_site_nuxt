@@ -64,7 +64,7 @@ useHead({
           jobTitle: content.value.hero.title,
           description: content.value.hero.about,
           url: localizedSiteUrl.value,
-          image: new URL('/images/profile.png', publicConfig.siteUrl).toString(),
+          image: new URL('/images/profile.jpg', publicConfig.siteUrl).toString(),
           address: {
             '@type': 'PostalAddress',
             addressLocality: 'Novo Hamburgo',
@@ -153,7 +153,7 @@ const heroStats = computed(() => [
         :title="content.hero.title"
         :badge="content.hero.badge"
         :about="content.hero.about"
-        photo-src="/images/profile.png"
+        photo-src="/images/profile.jpg"
         :photo-alt="content.hero.photoAlt"
         :contacts="contacts"
         :ctas="heroCtas"
